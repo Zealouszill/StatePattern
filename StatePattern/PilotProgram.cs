@@ -2,7 +2,7 @@
 
 namespace StatePattern
 {
-    class Program
+    class PilotProgram
     {
         static void Main(string[] args)
         {
