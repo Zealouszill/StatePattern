@@ -27,7 +27,7 @@ namespace StatePattern.States
         public override void PushBrakePedal()
         {
             TheAutoMobile.SetAutomobileState = TheAutoMobile.getBrakinngState();
-            Console.WriteLine("The car is breaking.");
+            Console.WriteLine("The car is braking.");
         }
 
         // Change state to AcceleratingState if this function is called.
