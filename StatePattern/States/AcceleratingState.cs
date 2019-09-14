@@ -33,7 +33,7 @@ namespace StatePattern.States
         // If this function is called, alert user that we are already in this class.
         public override void PushGasPedal()
         {
-            Console.WriteLine("The car is already accelerating.");
+            Console.WriteLine("The car continues to accelerating.");
         }
 
         // Change state to PoweredDownState if this function is called.
