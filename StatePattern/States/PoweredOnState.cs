@@ -4,26 +4,35 @@ using System.Text;
 
 namespace StatePattern.States
 {
-    class PoweredOnState : Automobile
+    class PoweredOnState : AutoMobileState
     {
-        public override void PushBreakPedal(bool value)
+        Automobile TheAutoMobile;
+
+        public PoweredOnState(Automobile newAutoMobileState)
         {
-            throw new NotImplementedException();
+            TheAutoMobile = newAutoMobileState;
+        }
+        public override void PushBreakPedal()
+        {
+            TheAutoMobile.SetAutomobileState = TheAutoMobile.getBrakinngState();
+            Console.WriteLine("The car is breaking.");
         }
 
-        public override void PushGasPedal(bool value)
+        public override void PushGasPedal()
         {
-            throw new NotImplementedException();
+            TheAutoMobile.SetAutomobileState = TheAutoMobile.getAcceleratingState();
+            Console.WriteLine("The car is accelerating.");
         }
 
-        public override void StateChangeCheck()
+        public override void TurnKeyOff()
         {
-            throw new NotImplementedException();
+            TheAutoMobile.SetAutomobileState = TheAutoMobile.getIsOffState();
+            Console.WriteLine("The car has been turned off.");
         }
 
-        public override void TurnKeyOff(bool value)
+        public override void TurnKeyOn()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The car is already turned on.");
         }
     }
 }

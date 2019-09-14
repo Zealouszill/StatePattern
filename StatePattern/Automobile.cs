@@ -1,28 +1,65 @@
-﻿using System;
+﻿using StatePattern.States;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace StatePattern
 {
-    abstract class Automobile
+    class Automobile
     {
-        private bool brakePedalPressed;
-        private bool gasPedalPressed;
-        private bool keyTurnedOn;
+        private AutoMobileState isAccelerating;
+        private AutoMobileState isBraking;
+        private AutoMobileState isOff;
+        private AutoMobileState isOn;
 
-        public void InitalizeClass()
+        private AutoMobileState automobileState;
+
+        private string carModel;
+        private string owner;
+
+        public Automobile(string model, string newOwner)
         {
-            brakePedalPressed = false;
-            gasPedalPressed = false;
-            keyTurnedOn = false;
+            isAccelerating = new AcceleratingState(this);
+            isBraking = new BrakingState(this);
+            isOff = new PoweredDownState(this);
+            isOn = new PoweredOnState(this);
+
+            automobileState = isOff;
+
+            carModel = model;
+            owner = newOwner;
         }
 
-        public abstract void PushGasPedal(bool value);
+        public AutoMobileState SetAutomobileState
+        {
+            get { return automobileState; }
+            set { automobileState = value; }
+        }
 
-        public abstract void PushBreakPedal(bool value);
+        public void PushBreakPedal()
+        {
+            SetAutomobileState.PushBreakPedal();
+        }
 
-        public abstract void TurnKeyOff(bool value);
+        public void PushGasPedal()
+        {
+            SetAutomobileState.PushGasPedal();
+        }
 
-        public abstract void StateChangeCheck();
+        public void TurnKeyOff()
+        {
+            SetAutomobileState.TurnKeyOff();
+        }
+
+        public void TurnKeyOn()
+        {
+            SetAutomobileState.TurnKeyOn();
+        }
+
+        public AutoMobileState getAcceleratingState() { return isAccelerating; }
+        public AutoMobileState getBrakinngState() { return isBraking; }
+        public AutoMobileState getIsOffState() { return isOff; }
+        public AutoMobileState getIsOnState() { return isOn; }
     }
 }

@@ -6,7 +6,15 @@ namespace StatePattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Automobile HondaAccord = new Automobile("Accord", "Spencer");
+
+            HondaAccord.PushBreakPedal();
+
+            HondaAccord.TurnKeyOn();
+
+            HondaAccord.PushBreakPedal();
+
+            HondaAccord.PushGasPedal();
         }
     }
 }
